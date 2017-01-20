@@ -1,0 +1,80 @@
+#ContactForm {
+    border-radius: 3px;
+    background-color: #fefefe;
+    padding: 35px;
+    padding-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 55px;
+    margin-top: 40px;
+    width: 305px;
+    box-shadow: 0px 1px 5px #888888;
+}
+
+input {
+    min-height: 30px;
+    max-height: 30px;
+    min-width: 300px;
+    max-width: 300px;
+    width: 300px;
+    background-color: #ecf0f1;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    font-size: 0.8em;
+    margin-bottom: 10px;
+    color: #707070;
+}
+
+input:hover {
+    border: 1px solid #aaa;
+    transition: 0.2s;
+}
+
+input:focus {
+    border: 1px solid teal;
+    color: #404040;
+}
+
+textarea {
+    min-height: 200px;
+    min-width: 300px;
+    max-width: 300px;
+    width: 300px;
+    background-color: #ecf0f1;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: #707070;
+}
+
+textarea:hover {
+    border: 1px solid #aaa;
+    transition: 0.2s;
+}
+
+textarea:focus {
+    border: 1px solid teal;
+    color: #404040;
+}
+
+.submitButton {
+    width: 300px;
+    height: 43px;
+    background-color: teal;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+}
+
+.submitButton:hover {
+    background: -webkit-linear-gradient(rgba(0,128,128,1), rgba(0,100,100,1));
+    background: -o-linear-gradient(rgba(0,128,128,1), rgba(0,100,100,1));
+    background: -moz-linear-gradient(rgba(0,128,128,1), rgba(0,100,100,1));
+    background: linear-gradient(rgba(0,128,128,1), rgba(0,100,100,1));
+    transition: background 0.3s;
+}
+.submitButton:focus {
+    color: white;
+}
