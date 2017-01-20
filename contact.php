@@ -53,44 +53,15 @@ if (isset($_POST["submit"])) {
 		
 		$headers = 'From: NOREPLY@YourDomain.com' . "\r\n" . 'Reply-To: NOREPLY@YourDomain.com' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 		if (mail($to, $subject, $message, $headers)) { //see https://secure.php.net/manual/en/function.mail.php
-			//header('Location: form.php?sent=true');
-			echo "Your message was successfully sent.";
+			header('Location: form.php?sent=true');
 		}
 		else {
 			//header('Location: form.php?sent=false'); //need some sort of error message for the user.
 			echo "Your message wasn't sent because there was a problem with the email server.<br />";
-			
-			//Testing output
-			echo "TO: ".$to."<br />
-			Subject: ".$subject."<br />
-			Message: ".$message."<br />
-			Headers: ".$headers;
 		}
 	}
 	else {
-		
-		header('Location: form.php?name='.urlencode(assignVariable('name', 'text')).'&email='.assignVariable('email', 'email').'&phone='.assignVariable('phone', 'text').'&message='.assignVariable('message', 'text'));
-		
-		//testing
-		/*
-		echo "Your message was not sent because: <br />";
-		if($name === FALSE)
-		{
-			echo "The name field was blank.<br />";
-		}
-		if($email === FALSE)
-		{
-			echo "invalid email.<br />";
-		}
-		if($phone === FALSE)
-		{
-			echo "The phone field was blank.<br />";
-		}
-		if($message === FALSE)
-		{
-			echo "The message field was blank.<br />";
-		}
-		*/
+		header('Location: form.php?name='.urlencode(htmlentities($_POST["name"], ENT_QUOTES)).'&email='.urlencode(htmlentities($_POST["email"], ENT_QUOTES)).'&phone='.urlencode(htmlentities($_POST["phone"], ENT_QUOTES)).'&message='.urlencode(htmlentities($_POST["message"], ENT_QUOTES)));
 	}
 }
 ?>
