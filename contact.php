@@ -68,7 +68,11 @@ if (isset($_POST["submit"])) {
 		}
 	}
 	else {
-		//header('Location: form.php?sent=false'); //need some sort of error message for the user.
+		
+		header('Location: form.php?name='.urlencode(assignVariable('name', 'text')).'&email='.assignVariable('email', 'email').'&phone='.assignVariable('phone', 'text').'&message='.assignVariable('message', 'text'));
+		
+		//testing
+		/*
 		echo "Your message was not sent because: <br />";
 		if($name === FALSE)
 		{
@@ -86,6 +90,7 @@ if (isset($_POST["submit"])) {
 		{
 			echo "The message field was blank.<br />";
 		}
+		*/
 	}
 }
 ?>

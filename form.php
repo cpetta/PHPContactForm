@@ -9,10 +9,10 @@
 	<body>
 		<div id="ContactForm">
 			<form action="contact.php" method="post">
-				<input name="name" value="" placeholder="Name" autofocus="" type="text">
-				<input name="email" value="" placeholder="Email Address" type="text">
-				<input name="phone" value="" placeholder="Phone Number" type="text">
-				<textarea name="message" value="" placeholder="Message" type="text"></textarea>
+				<input name="name" value='<?php if (isset($_GET["name"])) echo $_GET["name"]; ?>' placeholder="Name" autofocus="" type="text">
+				<input name="email" value="<?php if (isset($_GET["email"])) echo $_GET["email"]; ?>" placeholder="Email Address" type="text">
+				<input name="phone" value="<?php if (isset($_GET["phone"])) echo $_GET["phone"]; ?>" placeholder="Phone Number (###-####-#####)" type="text">
+				<textarea name="message" placeholder="Message" type="text"><?php if (isset($_GET["message"])) echo $_GET["message"]; ?></textarea>
 				<input class="submitButton" type="submit" name="submit" value="Send"/>
 			</form>
 		</div>
