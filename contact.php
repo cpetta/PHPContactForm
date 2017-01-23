@@ -61,7 +61,26 @@ if (isset($_POST["submit"])) {
 		}
 	}
 	else {
-		header('Location: form.php?name='.urlencode(htmlentities($_POST["name"], ENT_QUOTES)).'&email='.urlencode(htmlentities($_POST["email"], ENT_QUOTES)).'&phone='.urlencode(htmlentities($_POST["phone"], ENT_QUOTES)).'&message='.urlencode(htmlentities($_POST["message"], ENT_QUOTES)));
+		
+		$name = NULL;
+		$email = NULL;
+		$phone = NULL;
+		$message = NULL;
+		
+		if (validInput('name', 'text'))
+			$name = 'name='.urlencode(htmlentities($_POST["name"], ENT_QUOTES));
+		if (validInput('email', 'email'))
+			$email = 'email='.urlencode(htmlentities($_POST["email"], ENT_QUOTES));
+		else
+			$email = 'emailv='.urlencode(htmlentities($_POST["email"], ENT_QUOTES)); // this is required so that email gets relayed back to the calling script
+		if(validInput('phone', 'text'))
+			$phone = 'phone='.urlencode(htmlentities($_POST["phone"], ENT_QUOTES));
+		if(validInput('message', 'text'))
+			$message = 'message='.urlencode(htmlentities($_POST["message"], ENT_QUOTES));
+			
+		$location = 'Location: form.php?submit=true&'.$name.'&'.$email.'&'.$phone.'&'.$message;
+		echo $location;
+		header($location);
 	}
 }
 ?>

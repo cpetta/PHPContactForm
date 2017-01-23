@@ -58,6 +58,11 @@ textarea:focus {
     color: #404040;
 }
 
+.redBorder, .redBorder:hover, .redBorder:focus {
+	border: 1px solid #F00;
+	background-color: #ffaaaa
+}
+
 .submitButton {
     width: 300px;
     height: 43px;

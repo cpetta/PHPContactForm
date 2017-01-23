@@ -1,3 +1,17 @@
+<?php
+function setclass($name)
+{
+	if (!isset($_GET[$name]) && isset($_GET["submit"]))
+		echo "redBorder";
+}
+function getValue($name)
+{
+	if (isset($_GET[$name])) 
+		echo html_entity_decode(htmlentities($_GET[$name], ENT_QUOTES));
+		//echo $_GET[$name];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en-US">
 	<head>
@@ -9,10 +23,10 @@
 	<body>
 		<div id="ContactForm">
 			<form action="contact.php" method="post">
-				<input name="name" value='<?php if (isset($_GET["name"])) echo $_GET["name"]; ?>' placeholder="Name" autofocus="" type="text">
-				<input name="email" value="<?php if (isset($_GET["email"])) echo $_GET["email"]; ?>" placeholder="Email Address" type="text">
-				<input name="phone" value="<?php if (isset($_GET["phone"])) echo $_GET["phone"]; ?>" placeholder="Phone Number (###-####-#####)" type="text">
-				<textarea name="message" placeholder="Message" type="text"><?php if (isset($_GET["message"])) echo $_GET["message"]; ?></textarea>
+				<input class="<?php setclass("name"); ?>" name="name" value='<?php getValue("name"); ?>' placeholder="Name" autofocus="" type="text">
+				<input class="<?php setclass("email"); ?>" name="email" value="<?php getValue("emailv"); getValue("email"); ?>" placeholder="Email Address" type="text">
+				<input class="<?php  setclass("phone"); ?>" name="phone" value="<?php getValue("phone"); ?>" placeholder="Phone Number (###-####-#####)" type="text">
+				<textarea class="<?php  setclass("message"); ?>" name="message" placeholder="Message" type="text"><?php getValue("message"); ?></textarea>
 				<input class="submitButton" type="submit" name="submit" value="Send"/>
 			</form>
 		</div>
