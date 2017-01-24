@@ -68,7 +68,6 @@ textarea:focus {
 
 .redBorder, .redBorder:hover, .redBorder:focus {
 	box-shadow: 0px 0px 3px #ff0000;
-	back//ground-color: #ffaaaa
 }
 
 .submitButton {
