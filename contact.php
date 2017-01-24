@@ -45,7 +45,7 @@ if (isset($_POST["submit"])) {
 
 //End Form Validation
 
-	if($name && $email && $phone && $message) { //if form validates, run the code below
+	if($name && $email && $phone && $message) { //if form validates
 		$to = 'test@mail.local'; //Adress that the email will get sent to.
 		$subject = 'subject of the email'; // = 'Sent from contact form on mydomain.net, Subject: '.$subject;
 		$message = 'From: '.$name.' Email: '.$email.' Phone: '.$phone.' Message: '.$message;
@@ -71,15 +71,14 @@ if (isset($_POST["submit"])) {
 			$name = 'name='.urlencode(htmlentities($_POST["name"], ENT_QUOTES));
 		if (validInput('email', 'email'))
 			$email = 'email='.urlencode(htmlentities($_POST["email"], ENT_QUOTES));
-		else
+		elseif(validInput('email', 'text'))
 			$email = 'emailv='.urlencode(htmlentities($_POST["email"], ENT_QUOTES)); // this is required so that email gets relayed back to the calling script
 		if(validInput('phone', 'text'))
 			$phone = 'phone='.urlencode(htmlentities($_POST["phone"], ENT_QUOTES));
 		if(validInput('message', 'text'))
 			$message = 'message='.urlencode(htmlentities($_POST["message"], ENT_QUOTES));
 			
-		$location = 'Location: form.php?submit=true&'.$name.'&'.$email.'&'.$phone.'&'.$message;
-		echo $location;
+		$location = 'Location: form.php?submit=false&'.$name.'&'.$email.'&'.$phone.'&'.$message;
 		header($location);
 	}
 }
