@@ -1,4 +1,4 @@
-@font-face {
+@font-face { /* From google https://fonts.google.com/specimen/Droid+Sans */
   font-family: 'Droid Sans';
   font-style: normal;
   font-weight: 400;
@@ -11,6 +11,7 @@
     background-color: #fefefe;
     padding: 35px;
     padding-top: 30px;
+    padding-bottom: 55px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 55px;
@@ -95,10 +96,4 @@ textarea:focus {
 
 .redText {
 	color: red;
-}
-
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
 }
