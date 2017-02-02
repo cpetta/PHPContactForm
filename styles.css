@@ -71,6 +71,12 @@ textarea:focus {
 	box-shadow: 0px 0px 3px #ff0000;
 }
 
+/*
+.greenBorder, .greenBorder:hover, .greenBorder:focus {
+	box-shadow: 0px 0px 3px #00ff00;
+}
+*/
+
 .submitButton {
     min-width: 100px;
     max-width: 100px;
@@ -96,4 +102,7 @@ textarea:focus {
 
 .redText {
 	color: red;
+}
+.disabled {
+	display:none;
 }

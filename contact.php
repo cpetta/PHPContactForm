@@ -72,7 +72,7 @@ if (isset($_POST["submit"])) {
 		if (validInput('email', 'email'))
 			$email = 'email='.urlencode(htmlentities($_POST["email"], ENT_QUOTES));
 		elseif(validInput('email', 'text'))
-			$email = 'emailv='.urlencode(htmlentities($_POST["email"], ENT_QUOTES)); // this is required so that email gets relayed back to the calling script
+			$email = 'emailv='.urlencode(htmlentities($_POST["email"], ENT_QUOTES)); // this is required so that email gets sent back to the form if its not correctly entered.
 		if(validInput('phone', 'text'))
 			$phone = 'phone='.urlencode(htmlentities($_POST["phone"], ENT_QUOTES));
 		if(validInput('message', 'text'))
