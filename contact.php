@@ -36,50 +36,52 @@ if (isset($_POST["submit"])) {
 		}
 	}
 	
-	$name = assignVariable('name', 'text');
-	$email = assignVariable('email', 'email');
-	$phone = assignVariable('phone', 'text');
+	$form_name = assignVariable('name', 'text');
+	$form_email = assignVariable('email', 'email');
+	$form_phone = assignVariable('phone', 'text');
 	//$subject = assignVariable('subject', 'text');
-	$message = assignVariable('message', 'text');
+	$form_message = assignVariable('message', 'text');
 	//$WhateverOtherFormThingsYouWant = assignVariable('name', 'type');
 
 //End Form Validation
 
-	if($name && $email && $phone && $message) { //if form validates
+	if($form_name && $form_email && $form_phone && $form_message) { //if form validates
 		$to = 'test@mail.local'; //Adress that the email will get sent to.
 		$subject = 'subject of the email'; // = 'Sent from contact form on mydomain.net, Subject: '.$subject;
-		$message = 'From: '.$name.' Email: '.$email.' Phone: '.$phone.' Message: '.$message;
-		//$message = wordwrap($message, 70, "\r\n");
-		
+		$message = 'From: '.$form_name.' Email: '.$form_email.' Phone: '.$form_phone.' Message: '.$form_message;
+		$message = wordwrap($message, 70, "\r\n");
 		$headers = 'From: NOREPLY@YourDomain.com' . "\r\n" . 'Reply-To: NOREPLY@YourDomain.com' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+		
 		if (mail($to, $subject, $message, $headers)) { //see https://secure.php.net/manual/en/function.mail.php
 			header('Location: form.php?sent=true');
 		}
 		else {
-			//header('Location: form.php?sent=false'); //need some sort of error message for the user.
-			echo "Your message wasn't sent because there was a problem with the email server.<br />";
+			header('Location: form.php?sent=false');
 		}
 	}
 	else {
 		
-		$name = NULL;
-		$email = NULL;
-		$phone = NULL;
-		$message = NULL;
+		$url_name = NULL;
+		$url_email = NULL;
+		$url_phone = NULL;
+		$url_message = NULL;
 		
 		if (validInput('name', 'text'))
-			$name = 'name='.urlencode(htmlentities($_POST["name"], ENT_QUOTES));
+			$url_name = 'name='.urlencode(htmlentities($_POST["name"], ENT_QUOTES));
 		if (validInput('email', 'email'))
-			$email = 'email='.urlencode(htmlentities($_POST["email"], ENT_QUOTES));
+			$url_email = 'email='.urlencode(htmlentities($_POST["email"], ENT_QUOTES));
 		elseif(validInput('email', 'text'))
-			$email = 'emailv='.urlencode(htmlentities($_POST["email"], ENT_QUOTES)); // this is required so that email gets sent back to the form if its not correctly entered.
+			$url_email = 'emailv='.urlencode(htmlentities($_POST["email"], ENT_QUOTES)); // this is required so that email gets sent back to the form if its not correctly entered.
 		if(validInput('phone', 'text'))
-			$phone = 'phone='.urlencode(htmlentities($_POST["phone"], ENT_QUOTES));
+			$url_phone = 'phone='.urlencode(htmlentities($_POST["phone"], ENT_QUOTES));
 		if(validInput('message', 'text'))
-			$message = 'message='.urlencode(htmlentities($_POST["message"], ENT_QUOTES));
+			$url_message = 'message='.urlencode(htmlentities($_POST["message"], ENT_QUOTES));
 			
-		$location = 'Location: form.php?submit=false&'.$name.'&'.$email.'&'.$phone.'&'.$message;
+		$location = 'Location: form.php?submit=false&'.$url_name.'&'.$url_email.'&'.$url_phone.'&'.$url_message;
 		header($location);
 	}
+}
+else {
+	header('Location: form.php');
 }
 ?>
